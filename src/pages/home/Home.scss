@@ -1,0 +1,75 @@
+:root {
+  --size-title: 1rem;
+  --flex-size: 20%;
+}
+
+#main-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+}
+
+#gallery {
+  padding: 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  flex: 1 0 var(--flex-size);
+  margin: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  cursor: pointer;
+  color: black;
+
+  .frame {
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .photographer {
+    position: absolute;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    margin-right: 2rem;
+    z-index: 99;
+
+    & h1 {
+      text-align: center;
+      background-color: white;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: var(--size-title);
+    }
+
+    & .icon {
+      border-radius: 50%;
+      width: max-content;
+      height: max-content;
+    }
+
+    & svg {
+      width: calc(0.5rem + var(--size-title));
+      height: max-content;
+      padding: 0.2rem;
+      margin-right: 0.5rem;
+      border-radius: 50%;
+      fill: black;
+      background-color: white;
+    }
+  }
+}
