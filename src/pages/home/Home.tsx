@@ -20,15 +20,18 @@ const descVariants = {
   hover: { y: -30, opacity: 1, transition: { delay: 0.2, ...textTransition } },
 };
 
-const Home = () => {
+const Home = (props: any) => {
   return (
-    <div id="main-container">
+    <motion.div
+      id="main-container"
+      exit={{ y: 500, opacity: 0, transition: { delay: 0.2, ...transition } }}
+    >
       <div id="gallery">
         {imageList.map((data, index) => (
           <ImageThumbnail data={data} index={index} />
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -61,6 +64,12 @@ const ImageThumbnail = (props: any) => {
         className="frame"
         onHoverStart={() => togglehover()}
         onHoverEnd={() => togglehover()}
+        initial={{ y: 200, opacity: 0 }}
+        animate={{
+          y: 0,
+          opacity: 1,
+          transition: { delay: 0.2 * props.index, ...transition },
+        }}
       >
         <motion.img
           variants={imageVariants}

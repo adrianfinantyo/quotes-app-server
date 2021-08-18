@@ -1,7 +1,15 @@
-import { motion, useCycle } from "framer-motion";
+import { m, motion, useCycle } from "framer-motion";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import "./Detail.scss";
+
+const transition = { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] };
+
+const photoVariants = {
+  rest: { y: 500, opacity: 0 },
+  enter: { y: 0, opacity: 1, transition: { delay: 0.2, ...transition } },
+  exit: { y: 500, opacity: 0, transition: { delay: 0.2, ...transition } },
+};
 
 const Detail = () => {
   const data: any = useLocation().state;
@@ -10,10 +18,10 @@ const Detail = () => {
   const handleOnClick = () => window.open(`${data.link}`);
 
   return (
-    <div id="detail-main">
-      <div className="img-wrapper">
+    <motion.div id="detail-main" initial="rest" animate="enter" exit="exit">
+      <motion.div className="img-wrapper" variants={photoVariants}>
         <img src={data.link} alt={data.photographer} />
-      </div>
+      </motion.div>
       <div className="desc-wrapper">
         <h1>Photo Title</h1>
         <h3>Photo by: {data.photographer}</h3>
@@ -21,7 +29,7 @@ const Detail = () => {
           See Original <Arrow />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

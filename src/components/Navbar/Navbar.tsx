@@ -1,21 +1,21 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Navbar.scss";
 
-const Navbar = () => {
-  const [onScroll, setOnScroll] = useState(false);
-
-  window.addEventListener("scroll", (event) => {
-    if (window.scrollY > 0) setOnScroll(true);
-    else setOnScroll(false);
-  });
-
+const Navbar = (props: any) => {
   return (
-    <header className={onScroll ? "on-scroll" : ""}>
+    <header className={props.onScroll ? "on-scroll" : ""}>
       <div id="header-child">
-        <h1>MY GALERRY</h1>
+        <NavLink to="/" className="link">
+          <h1>MY GALERRY</h1>
+        </NavLink>
         <nav>
-          <a>About Us</a>
-          <a>FAQ</a>
+          <NavLink to="/" className="link">
+            About Us
+          </NavLink>
+          <NavLink to="/" className="link">
+            FAQ
+          </NavLink>
         </nav>
       </div>
     </header>

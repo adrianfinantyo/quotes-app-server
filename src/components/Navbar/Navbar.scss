@@ -3,11 +3,19 @@
 }
 
 header {
+  position: fixed;
   width: 100%;
   height: 6rem;
   background-color: black;
   color: white;
   transition: all 0.5s ease-in-out;
+  z-index: 999;
+
+  & .link {
+    text-decoration: none;
+    color: white;
+    transition: all 0.5s ease-in-out;
+  }
 }
 
 #header-child {
@@ -34,9 +42,9 @@ nav {
 }
 
 .on-scroll {
-  position: fixed;
   height: 4rem;
   background-color: white;
-  color: black;
-  z-index: 999;
+  & .link {
+    color: black;
+  }
 }
